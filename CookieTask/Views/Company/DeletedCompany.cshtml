@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CompanyTask.Models.CompanyModel>
+@{
+    ViewBag.Title = "Deleted Companies";
+}
+
+<h2>Deleted Companies</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Company Name</th>
+            <th>Start Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr id="row-@company.Id">
+                <td>@company.Id</td>
+                <td>@company.CompanyName</td>
+                <td>@company.Startdate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

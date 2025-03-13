@@ -1,0 +1,35 @@
+﻿@model CompanyTask.Models.CompanyModel
+
+@{
+    ViewData["Title"] = "Edit Company";
+}
+
+<h2>Edit Company</h2>
+
+@using (Html.BeginForm("Edit", "Company", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CompanyName)
+        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Startdate)
+        @Html.TextBoxFor(m => m.Startdate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.Startdate, "", new { @class = "text-danger" })
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <hr>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
